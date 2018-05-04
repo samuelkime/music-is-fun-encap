@@ -11,32 +11,30 @@ function ItunesController() {
     function draw(results) {
         console.log(results)
         var template = ''
-        for (let i = 0; i < results.length; i++) {
+        for (var i = 0; i < results.length; i++) {
             const song = results[i];
             if(song.kind == "song"){
             template += 
             `
-            <div class="container">
-              <div class="row">
-                 <div class="col-12-xs col-3-xl">
-                  <div class="media">
-                      <div class="media-left">
-                          <img src="${song.albumArt}" class="media-object" style="width:60px">
-                      </div>
-                      <div class="media-body">
-                          <h3 class="media-heading">${song.title}</h3>
-                          <h4>${song.artist}</h4>
-                          <h5>Album: ${song.collection}</h5 
-                          <h5>Price: $${song.price}</h5>
-                      </div>
-                      <div>
-                          <audio controls>
-                              <source src="${song.preview}" type="audio/mpeg">
-                          </audio>
-                      </div>
+            <div id="outline" class="col-3 offset-md-1">
+                <div class="row">
+                  <div class="col d-inline-flex">
+                    <span class="border border-dark">
+                      <img class="rounded" src="${song.albumArt}" width="150" height="150" alt="">
+                    </span>
                   </div>
+                  <div class="col d-flex flex-column justify-content-start"> 
+                    <h5 class="truncate">Song: ${song.title}</h5>
+                    <h5>Artist: ${song.artist} </h5>
+                    <h6>Album: ${song.collection}</h6>
+                    <h6>Price: $${song.price}</h6>
+                  </div>
+                </div>     
+                <div class="row d-flex justify-content-center">
+                    <audio controls>
+                        <source src="${song.preview}" type="audio/mpeg">
+                    </audio>
                 </div>
-              </div>
             </div>
           `
           }
